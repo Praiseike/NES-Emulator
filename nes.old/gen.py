@@ -1,7 +1,12 @@
 
 file = open('file.c','w');
 
-
+format = \
+"""
+void  _%s(){
+    return;
+}
+"""
 def fprint(data,end,file):
     file.write(data + end);
 
@@ -13,7 +18,7 @@ for i in range(256):
     end = ' ';
     if(i % 8 == 7):
         end = '\n'
-    fprint(f"opcodes[0x{a}] = _{a};",end,file);
+    fprint(format % a,end,file);
 
 #     fprint(f"void _{a}();",end,file);
 
